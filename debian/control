@@ -1,15 +1,31 @@
-Source: template-repository
-Section: unknown
+Source: golang-github-mdlayher-socket
 Priority: optional
-Maintainer: Tsic404 <liuheng@deepin.org>
-Build-Depends: debhelper (>= 11)
+Maintainer: electricface <songwentai@uniontech.com>
+Build-Depends: debhelper (>= 11),
+ dh-golang (>= 1.10~),
+ golang-any,
+ golang-golang-x-net-dev,
+ golang-golang-x-sync-dev,
+ golang-golang-x-sys-dev
 Standards-Version: 4.1.3
-Homepage: https://github.com/deepin-community/template-repository
-#Vcs-Browser: https://salsa.debian.org/debian/deepin-community-template-repository
-#Vcs-Git: https://salsa.debian.org/debian/deepin-community-template-repository.git
+Section: devel
+Homepage: https://github.com/mdlayher/socket
+#Vcs-Browser: https://salsa.debian.org/debian/golang-github-mdlayher-socket
+#Vcs-Git: https://salsa.debian.org/debian/golang-github-mdlayher-socket.git
+XS-Go-Import-Path: github.com/mdlayher/socket
 
-Package: template-repository
-Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}
-Description: <insert up to 60 chars description>
- <insert long description, indented with spaces>
+Package: golang-github-mdlayher-socket-dev
+Section: libdevel
+Architecture: all
+Depends: ${misc:Depends},
+ golang-golang-x-net-dev,
+ golang-golang-x-sync-dev,
+ golang-golang-x-sys-dev
+Description: low-level network socket for Go
+ This package provides a low-level network connection type which integrates with
+ Go's runtime network poller to provide asynchronous I/O and deadline support.
+ This package focuses on UNIX-like operating systems which make use of BSD
+ sockets system call APIs. It is meant to be used as a foundation for the
+ creation of operating system-specific socket packages, for socket families
+ such as Linux's AF_NETLINK, AF_PACKET, or AF_VSOCK. This package should not be
+ used directly in end user applications.
